@@ -1,0 +1,18 @@
+---
+- name: Attach Volume for EC2 instance
+  hosts: localhost
+  gather_facts: false
+  vars:
+    region: us-east-1
+  tasks:
+    - name: Attach Volume
+      ec2_vol:
+        id: vol-011d56ab3f91b4040
+        instance: i-0d1ce9566e7ff8efa
+        region: "{{ region }}"
+        delete_on_termination: yes
+        device_name: /dev/xvdf
+        
+
+
+

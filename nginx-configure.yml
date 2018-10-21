@@ -1,0 +1,16 @@
+---
+- hosts: webserver
+  sudo: yes
+  remote_user: ec2-user
+
+  tasks:
+  - name: Install Apache
+    yum: name=httpd state=latest
+  - name: Ensure apache is running and will start at boot level
+    service: name=httpd state=started enabled=yes
+
+    notify:
+    - restart httpd
+    handlers:
+      - name: restart httpd
+        service: name=httpd state=restarted
