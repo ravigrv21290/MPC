@@ -16,8 +16,8 @@
   tasks:
     - name: Create EC2 Instance
       ec2:
-#        aws_access_key: "{{ aws_access_key }}"
-#        aws_secret_key: "{{ aws_secrete_key }}"
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secrete_key }}"
         key_name: "{{ keypair }}"
         group: "{{ security_group }}"
         instance_type: "{{ instance_type }}"
