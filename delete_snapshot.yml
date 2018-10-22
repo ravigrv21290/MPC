@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: "local"
+  gather_facts: false
+  vars:
+    region: "us-east-1"
+    s_id: "s_id"
+    zone: "zone"
+    desc: "desc"
+
+  tasks:
+  
+   - name: "Snapshot of Volume"
+     local_action:
+        module: ec2_snapshot
+        snapshot_id: "{{ s_id }}"
+        state: absent
+        region: "{{ region }}"
+        #zone: "{{ zone }}"
+
+
+# ansible-playbook remove_snapshot_volume.yml  --extra-vars "s_id=" -vvvv

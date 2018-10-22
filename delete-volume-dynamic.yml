@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: "local"
+  gather_facts: false
+  vars:
+    region: "us-east-1"
+    v_id: "v_id"
+    zone: "zone"
+    desc: "desc"
+
+  tasks:
+  
+   - name: "Snapshot of Volume"
+     ec2_vol:
+       id: "{{ v_id }}"
+       instance: None
+       state: absent
+       region: "{{ region }}"
+       #zone: "{{ zone }}"
+
+# ansible-playbook remove__volume.yml  --extra-vars "v_id=" -vvvv

@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: "local"
+  gather_facts: false
+  vars:
+    region: "us-east-1"
+    v_id: "v_id"
+    zone: "zone"
+    desc: "desc"
+
+  tasks:
+  
+   - name: "Create Snapshot of Volume"
+     ec2_snapshot:
+       volume_id: "{{ v_id }}"
+       description: "{{ desc }}" 
+       region: "{{ region }}"
+       #zone: "{{ zone }}"
+
+# ansible-playbook create_snapshot.yml --extra-vars "v-id= region="
