@@ -12,8 +12,8 @@
     security_group: default
     keypair: my-key
     groupname: webserver
-#    aws_access_key: AKIAIJBI4UVD62LDAUBA
-#    aws_secret_key: 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
+#    aws_access_key:
+#    aws_secret_key: 
     subnet: subnet-86b612da
 
   tasks:
