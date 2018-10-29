@@ -1,0 +1,33 @@
+---
+
+- name: Craete Ec2 Instance
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    region: us-east-1
+    instance_type: t2.micro
+    ami: ami-14c5486b                # Ubuntu 16.04 LTS
+    keypair: ec2-provision           # pem file name of AWS
+    security_group: [ 'default' ]    # Security group name
+    aws_access_key: AKIAJ2BSYP3BGOTXVPMQ
+    aws_secrete_key: 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
+
+  tasks:
+    - name: Create EC2 Instance
+      ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secrete_key }}"
+        key_name: "{{ keypair }}"
+        group: "{{ security_group }}"
+        instance_type: "{{ instance_type }}"
+        image: "{{ ami }}"
+        wait: true
+        region: "{{ region }}"
+        count: 1
+        count_tag: Ubuntu16
+        instance_tags:
+           Name: Ubuntu Machine
+#        register: ec2
+#        debug:
+#          msg: var={{ec2}}

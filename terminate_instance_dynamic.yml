@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: "local"
+  gather_facts: false
+  vars:
+    region: "us-east-1"
+    ec2_id: "ec2_id"
+
+  tasks:
+  
+   - name: "Terminate tagged EC2 instances"
+     ec2:
+       state: "absent"
+       region: "{{ region }}"
+       instance_ids: "{{ ec2_id }}"
+       wait: true
+    
+#ansible-playbook terminate_ec2.yml  --extra-vars "ec2_id=i-0477f32045cfb3b31" -vvvv

@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: "local"
+  gather_facts: false
+  vars:
+    region: "us-east-1"
+    v_size: "size"
+    zone: "zone"
+
+  tasks:
+  
+   - name: "Create Volume"
+     ec2_vol:
+       volume_size: "{{ v_size }}"
+       volume_type: gp2
+       device_name: /dev/xvdf
+       region: "{{ region }}"
+       zone: "{{ zone }}"
+
+#ansible-playbook create_volume.yml  --extra-vars "v_size=8 zone=us-east-1a" -vvvv

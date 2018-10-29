@@ -1,0 +1,15 @@
+---
+- name: Start the EC2 Instance
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    instance_ids: i-00de5dbe0ffabf9a8
+    region: us-east-1
+
+  tasks:
+    - name: Start the EC2 Instance
+      ec2:
+        instance_ids: "{{ instance_ids }}"
+        region: "{{ region }}"
+        state: running 

@@ -1,0 +1,15 @@
+---
+- name: Create Volume for EC2 instance
+  hosts: localhost
+  gather_facts: false
+  vars:
+    region: us-east-1
+  tasks:
+    - name: Create Volume
+      ec2_vol:
+#        instance: i-0d1ce9566e7ff8efa
+        region: "{{ region }}"
+        volume_size: 8
+        volume_type: gp2
+        device_name: /dev/xvdf
+        zone: us-east-1a
