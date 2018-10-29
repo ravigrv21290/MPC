@@ -10,8 +10,8 @@
     ami: ami-14c5486b                # Ubuntu 16.04 LTS
     keypair: ec2-provision           # pem file name of AWS
     security_group: [ 'default' ]    # Security group name
-    aws_access_key: AKIAJ2BSYP3BGOTXVPMQ
-    aws_secrete_key: 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
+    aws_access_key: 
+    aws_secrete_key: 
 
   tasks:
     - name: Create EC2 Instance
